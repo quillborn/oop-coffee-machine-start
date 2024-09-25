@@ -46,7 +46,6 @@ while is_on:
             continue
         else:
           if kofi.is_resource_sufficient(kofi,drink):
-              print("True")
               
               #helps to represent values in a monetary format
               monetary_rep = "${:.2f}"
