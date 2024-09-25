@@ -51,9 +51,12 @@ while is_on:
               monetary_rep = "${:.2f}"
 
               print(f"{drink.name}: {monetary_rep.format(drink.cost)}")
-              moni.make_payment(moni,drink.cost)
-
-              kofi.make_coffee(kofi,drink)
+              
+              #if we have enoguh money we kmake the drink otherwise we start over
+              if moni.make_payment(moni,drink.cost):
+                kofi.make_coffee(kofi,drink)
+              else: 
+                continue
               
 
         
