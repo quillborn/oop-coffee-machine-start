@@ -14,6 +14,7 @@ def bootup():
     menu.__init__(menu)
 
 def interpreter(expression):
+    """Helps to define user input as menu items based off of array slice"""
     if expression[:1] == "l":
         return "latte"
     elif expression[:1] == "e":
@@ -23,18 +24,18 @@ def interpreter(expression):
     else:
         return "Invalid input"
 
+#Coffee Maching Starts up
 is_on = True
 bootup()
 
-
+#Prompts user for initial input
 while is_on:
-    try:
-        command = str(input(f"What would you like? ({menu.get_items(menu)}): ").lower())
-    except:print("Please input a command in the form of a string of text only.")
+    
+    command = str(input(f"What would you like? ({menu.get_items(menu)}): ").lower())
+    
 
     if command[:1] == "o":
         print("Shutting down..")
-        is_on = False
         exit()
     elif command[:1] == "r":
         kofi.report(kofi)
@@ -46,11 +47,15 @@ while is_on:
         else:
           if kofi.is_resource_sufficient(kofi,drink):
               print("True")
-              #would like to format the drink cost to reflecct monetary syntax
+              
+              #helps to represent values in a monetary format
               monetary_rep = "${:.2f}"
+
               print(f"{drink.name}: {monetary_rep.format(drink.cost)}")
               moni.make_payment(moni,drink.cost)
 
+              kofi.make_coffee(kofi,drink)
+              
 
         
 
